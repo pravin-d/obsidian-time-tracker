@@ -13,3 +13,4 @@ main.js
 # data
 data.json
 dist
+.DS_Store
