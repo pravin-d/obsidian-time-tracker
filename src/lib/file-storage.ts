@@ -2,6 +2,7 @@ import { TFile } from 'obsidian'
 import TimerTrackerPlugin from '../main'
 import * as os from 'os'
 import { Timer } from './timer'
+import placeholders from './placeholders';
 
 export default class FileStorage {
   plugin: TimerTrackerPlugin
@@ -25,7 +26,10 @@ export default class FileStorage {
   formatTimerData(timer: Timer): string {
     const { settings } = this.plugin
     const duration = timer.getApproximatedDuration(settings.approximation)
-    return timer.id + ': `' + timer.getFormattedDurationString(duration) +'`'
+    const formatterDurationString = timer.getFormattedDurationString(duration)
+    const timerId = timer.id
+    const formatterString = placeholders(settings.storageTemplate, {duration: formatterDurationString, timerId})
+    return formatterString
   }
 
   formatHeader(): string {
