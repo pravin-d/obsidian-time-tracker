@@ -103,3 +103,12 @@ form.time-tracker-edit span {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.time-tracker-settings-modal .flex-dir-col {
+    flex-direction: column;
+}
+.time-tracker-settings-modal .flex-align-items-start {
+    align-items: start;
+}
+.time-tracker-settings-modal .width100 {
+    width: 100%;
+}

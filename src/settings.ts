@@ -3,6 +3,7 @@ export default interface TimerTrackerPluginSettings {
 	pomodoroDuration: number;
 	storageFile: string;
 	enableStatusBar: boolean;
+	storageTemplate: string;
 }
 
 export const DEFAULT_SETTINGS: TimerTrackerPluginSettings = {
@@ -10,4 +11,5 @@ export const DEFAULT_SETTINGS: TimerTrackerPluginSettings = {
 	pomodoroDuration: 5 * 60,
 	storageFile: 'TimeTracker',
 	enableStatusBar: true,
+	storageTemplate: '',
 }

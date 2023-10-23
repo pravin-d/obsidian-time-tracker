@@ -12,6 +12,7 @@ export default class TimeTrackerIssueSettingTab extends PluginSettingTab {
   async display(): Promise<void> {
     const { containerEl } = this
     containerEl.empty()
+    containerEl.addClass('time-tracker-settings-modal');
 
     new Setting(containerEl)
       .setName('Timer approximation')
@@ -65,5 +66,22 @@ export default class TimeTrackerIssueSettingTab extends PluginSettingTab {
           this.plugin.settings.enableStatusBar = value
           await this.plugin.saveSettings()
         }))
+
+    const templateSettingsEl = new Setting(containerEl)
+      .setName('Timer Storage template')
+      .setDesc('Template used when saving the timer result')
+      .addTextArea(textArea => {
+        textArea
+        .setValue(this.plugin.settings.storageTemplate)
+        .onChange(async (value) => {
+          this.plugin.settings.storageTemplate = value
+          await this.plugin.saveSettings()
+        })
+        textArea.inputEl.rows = 6;
+        textArea.inputEl.cols = 25;
+        textArea.inputEl.addClass('width100');
+      })
+      templateSettingsEl.settingEl.addClasses(['flex-dir-col', 'flex-align-items-start']);
+      templateSettingsEl.controlEl.addClass('width100');
   }
 }

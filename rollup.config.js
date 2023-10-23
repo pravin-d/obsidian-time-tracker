@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
+import copy from 'rollup-plugin-copy';
 
 const banner =
     `/*
@@ -25,6 +26,13 @@ export default {
         typescript(),
         nodeResolve({ browser: true }),
         commonjs(),
-        json()
+        json(),
+        copy({ 
+            targets: [
+                { src: 'main.js', dest: 'dist/' },
+                { src: 'manifest.json', dest: 'dist/' },
+                { src: 'styles.css', dest: 'dist/' }
+            ]
+        })
     ]
 };
