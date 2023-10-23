@@ -4,6 +4,7 @@ export default interface TimerTrackerPluginSettings {
 	storageFile: string;
 	enableStatusBar: boolean;
 	storageTemplate: string;
+	saveAsListItem: boolean;
 }
 
 export const DEFAULT_SETTINGS: TimerTrackerPluginSettings = {
@@ -12,4 +13,5 @@ export const DEFAULT_SETTINGS: TimerTrackerPluginSettings = {
 	storageFile: 'TimeTracker',
 	enableStatusBar: true,
 	storageTemplate: '',
+	saveAsListItem: false,
 }

@@ -31,7 +31,7 @@ export default {
             targets: [
                 { src: 'main.js', dest: 'dist/' },
                 { src: 'manifest.json', dest: 'dist/' },
-                { src: 'styles.css', dest: 'dist/' }
+                { src: 'styles.css', dest: 'dist/' },
             ]
         })
     ]

@@ -39,10 +39,14 @@ export default class FileStorage {
 
   async save(timer: Timer): Promise<void> {
     const { vault } = this.plugin.app
+    const { settings } = this.plugin;
 
     const filePath = this.getStorageFilePath()
     const header = this.formatHeader()
-    const data = this.formatTimerData(timer)
+    let data = this.formatTimerData(timer)
+    if (settings.saveAsListItem) {
+      data = `- ${data}`;
+    }
 
     let file = this.getStorageFile()
     if (file) {

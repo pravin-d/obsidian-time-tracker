@@ -83,5 +83,15 @@ export default class TimeTrackerIssueSettingTab extends PluginSettingTab {
       })
       templateSettingsEl.settingEl.addClasses(['flex-dir-col', 'flex-align-items-start']);
       templateSettingsEl.controlEl.addClass('width100');
+
+    new Setting(containerEl)
+      .setName('Save Timer as list item')
+      .setDesc('This will save the item in a list')
+      .addToggle(toggle => toggle
+        .setValue(this.plugin.settings.saveAsListItem)
+        .onChange(async (value) => {
+          this.plugin.settings.saveAsListItem = value
+          await this.plugin.saveSettings()
+        }))
   }
 }
